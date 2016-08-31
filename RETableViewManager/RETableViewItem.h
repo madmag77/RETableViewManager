@@ -59,7 +59,7 @@
 // Action bar
 @property (copy, readwrite, nonatomic) void (^actionBarNavButtonTapHandler)(id item); //handler for nav button on ActionBar
 @property (copy, readwrite, nonatomic) void (^actionBarDoneButtonTapHandler)(id item); //handler for done button on ActionBar
-
+@property (strong, readwrite, nonatomic) NSArray *slideButtons; //UITableViewRowAction buttons should be here
 
 // Error validation
 //

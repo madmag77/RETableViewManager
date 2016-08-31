@@ -805,9 +805,15 @@
 
 -(NSArray*) tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    RETableViewSection *section = self.mutableSections[indexPath.section];
+    RETableViewItem *item = section.items[indexPath.row];
+
+    // Forward to UITableView delegate
+    //
     if ([self.delegate conformsToProtocol:@protocol(UITableViewDelegate)] && [self.delegate respondsToSelector:@selector(tableView:editActionsForRowAtIndexPath:)])
         return [self.delegate tableView:tableView editActionsForRowAtIndexPath:indexPath];
-    return nil;
+   
+    return item.slideButtons;
 }
 
 
