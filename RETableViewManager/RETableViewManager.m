@@ -803,6 +803,14 @@
         [self.delegate tableView:tableView performAction:action forRowAtIndexPath:indexPath withSender:sender];
 }
 
+-(NSArray*) tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([self.delegate conformsToProtocol:@protocol(UITableViewDelegate)] && [self.delegate respondsToSelector:@selector(tableView:editActionsForRowAtIndexPath:)])
+        return [self.delegate tableView:tableView editActionsForRowAtIndexPath:indexPath];
+    return nil;
+}
+
+
 #pragma mark -
 #pragma mark UIScrollViewDelegate
 
