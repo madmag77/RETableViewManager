@@ -234,6 +234,12 @@
     if ([item isKindOfClass:[RETableViewItem class]])
         cell.detailTextLabel.text = ((RETableViewItem *)item).detailLabelText;
     
+    cell.rowIndex = indexPath.row;
+    cell.sectionIndex = indexPath.section;
+    cell.parentTableView = tableView;
+    cell.section = section;
+    cell.item = item;
+    
     [cell cellWillAppear];
     
     return cell;
