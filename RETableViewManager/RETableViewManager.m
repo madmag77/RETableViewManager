@@ -206,6 +206,11 @@
         if ([self.delegate conformsToProtocol:@protocol(RETableViewManagerDelegate)] && [self.delegate respondsToSelector:@selector(tableView:willLoadCell:forRowAtIndexPath:)])
             [self.delegate tableView:tableView willLoadCell:cell forRowAtIndexPath:indexPath];
         
+        cell.rowIndex = indexPath.row;
+        cell.sectionIndex = indexPath.section;
+        cell.parentTableView = tableView;
+        cell.section = section;
+        cell.item = item;
         [cell cellDidLoad];
         
         // RETableViewManagerDelegate
@@ -224,11 +229,6 @@
         loadCell(cell);
     }
     
-    cell.rowIndex = indexPath.row;
-    cell.sectionIndex = indexPath.section;
-    cell.parentTableView = tableView;
-    cell.section = section;
-    cell.item = item;
     cell.detailTextLabel.text = nil;
     
     if ([item isKindOfClass:[RETableViewItem class]])
